@@ -68,4 +68,9 @@ class Student
       return house
     end
 
+  # def house
+  #   house = House.find(@house_id)
+  #   return house
+  # end
+
 end
