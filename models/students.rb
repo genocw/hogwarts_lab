@@ -1,5 +1,6 @@
 require_relative("../db/sql_runner.rb")
 
+
 class Student
 
   attr_accessor(:first_name, :last_name, :house, :age)
@@ -37,6 +38,24 @@ class Student
       string_id = result_hash["id"]
       id = string_id.to_i
       @id = id
+    end
+
+    def self.all()
+      sql = "
+        SELECT * FROM students
+      "
+      results = SqlRunner.run(sql)
+      return results.map { |student_hash| Student.new(student_hash) }
+    end
+
+    def self.find(id)
+      sql = "
+        SELECT * FROM students
+        WHERE id = $1;
+      "
+      values = [id]
+      results = SqlRunner.run(sql, values)
+      Student.new(results[0])
     end
 
 end
