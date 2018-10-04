@@ -2,31 +2,6 @@ require_relative("../models/students.rb")
 require_relative("../models/house.rb")
 require("pry")
 
-student1 = Student.new({
-  "first_name"  =>  "Harry",
-  "last_name"   =>  "Potter",
-  "house"       =>  "Gryffindor",
-  "age"         =>  "14"
-  })
-
-student2 = Student.new({
-  "first_name"  =>  "Draco",
-  "last_name"   =>  "Malfoy",
-  "house"       =>  "Slytherin",
-  "age"         =>  "14"
-  })
-
-student3 = Student.new({
-  "first_name"  =>  "Luna",
-  "last_name"   =>  "Lovegood",
-  "house"       =>  "Ravenclaw",
-  "age"         =>  "13"
-  })
-
-  student1.save
-  student2.save
-  student3.save
-
 house1 = House.new({
   "name" => "Gryffindor",
   "logo" => "https://i.pinimg.com/474x/d1/e8/53/d1e853a51cc4f6b25a9f96914e04b992--the-house-harry-potter-hogwarts.jpg"
@@ -52,5 +27,32 @@ house2.save()
 house3.save()
 house4.save()
 
-# binding.pry
-# nil
+student1 = Student.new({
+  "first_name"  =>  "Harry",
+  "last_name"   =>  "Potter",
+  "house_id"    =>  house1.id,
+  "age"         =>  "14"
+  })
+
+student2 = Student.new({
+  "first_name"  =>  "Draco",
+  "last_name"   =>  "Malfoy",
+  "house_id"    =>  house4.id,
+  "age"         =>  "14"
+  })
+
+student3 = Student.new({
+  "first_name"  =>  "Luna",
+  "last_name"   =>  "Lovegood",
+  "house_id"    =>  house2.id,
+  "age"         =>  "13"
+  })
+
+  student1.save
+  student2.save
+  student3.save
+
+
+
+binding.pry
+nil

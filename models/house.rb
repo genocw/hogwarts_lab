@@ -22,5 +22,20 @@ attr_reader(:id)
     @id = results[0]["id"].to_i
   end
 
+  def self.all()
+    sql = "SELECT * FROM houses;"
+    house_array = SqlRunner.run(sql)
+    return house_array.map { |house| House.new(house)  }
+  end
+
+  def self.find(id)
+    sql = "SELECT * FROM houses
+    WHERE id = $1;"
+    values = [id]
+    result = SqlRunner.run(sql, values)
+    return House.new(result[0])
+
+  end
+
 
 end
